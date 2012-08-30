@@ -2,7 +2,6 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>net.nightpool.bukkit</groupId>
   <artifactId>paintor</artifactId>
-  <version>0.1</version>
   <name>Paintor</name>
   <description>Simple plugin that provides the functionality of the ToolBelt (nee VoxelDoop) paintbrush, without an item.</description>
   <repositories>    
@@ -59,4 +58,5 @@
   </plugins>
   </build>
   
+  <version>1.0-RELEASE</version>
 </project>
