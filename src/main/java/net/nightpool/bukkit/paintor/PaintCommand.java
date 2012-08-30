@@ -1,6 +1,7 @@
 package net.nightpool.bukkit.paintor;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -26,7 +27,15 @@ public class PaintCommand implements CommandExecutor {
 				on(player); return true;
 			}else if(args[0].equals("off")){
 				off(player); return true;
-			}else{
+			}else if(Material.matchMaterial(args[0]) != null){
+				for (String s : args){
+					if(Material.matchMaterial(s) != null){
+						p.builds.add(Material.matchMaterial(s));
+					} else{
+						player.sendMessage(ChatColor.RED + "No material "+s+" found.");
+					}
+				}
+			} else{
 				return false;
 			}
 		}

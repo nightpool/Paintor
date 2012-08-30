@@ -17,7 +17,7 @@ public class PaintEvent implements Listener {
 	@EventHandler(priority=EventPriority.HIGH)
 	public void HandleBlock(BlockPlaceEvent ev){
 		Player pl = ev.getPlayer();
-		if(p.painters.contains(pl)){
+		if(p.painters.contains(pl) && !p.builds.contains(ev.getBlock().getType())){
 			ev.getBlockAgainst().setTypeIdAndData(ev.getBlock().getTypeId(), ev.getBlock().getData(), true);
 			ev.setCancelled(true);
 		}
