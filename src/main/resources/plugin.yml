@@ -1,0 +1,8 @@
+name: Paintor
+main: net.nightpool.bukkit.paintor.PaintPlugin
+version: maven-version-number
+commands:
+   paintor: 
+      description: This is the main command. Toggles painting mode.
+      usage: /<command> [on|off]
+      aliases: [paint, pn]
