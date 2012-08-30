@@ -24,18 +24,25 @@ public class PaintPlugin extends JavaPlugin {
 		pc = new PaintCommand(this);
 		pe = new PaintEvent(this);
 		
+		builds = new HashSet<Material>();
 		painters = new HashSet<Player>();
 		
 		getCommand("paintor").setExecutor(pc);
 		getServer().getPluginManager().registerEvents(pe, this);
 
-		getLogger().info("Enabled!");
-		
 		for (int i : getConfig().getIntegerList("building-blocks")){
-			builds.add(Material.getMaterial(i));
+			getLogger().info(""+i);
+			Material m = Material.getMaterial(i);
+			if(m != null){
+				builds.add(m);
+			} else{
+				getLogger().warning("Material "+String.valueOf(i)+" from config not found.");
+			}
 		}
 		getConfig().options().copyDefaults(true);
 		saveConfig();
+
+		getLogger().info("Enabled!");
 	}
 	
 	@Override
