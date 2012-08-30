@@ -14,20 +14,17 @@ public class PaintPlugin extends JavaPlugin {
 	public PaintEvent pe;
 	
 	
-	
-	public PaintPlugin(){
-		pc = new PaintCommand(this);
-		getCommand("paintor").setExecutor(pc);
-		
-		pe = new PaintEvent(this);
-		getServer().getPluginManager().registerEvents(pe, this);
-		
-	}
-	
 	@Override
 	public void onEnable(){
-		getLogger().info("Enabled!");
+		pc = new PaintCommand(this);
+		pe = new PaintEvent(this);
+		
 		painters = new HashSet<Player>();
+		
+		getCommand("paintor").setExecutor(pc);
+		getServer().getPluginManager().registerEvents(pe, this);
+
+		getLogger().info("Enabled!");
 	}
 	
 	@Override
