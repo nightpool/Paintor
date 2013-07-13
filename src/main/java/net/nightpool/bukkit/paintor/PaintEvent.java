@@ -1,5 +1,6 @@
 package net.nightpool.bukkit.paintor;
 
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -16,9 +17,12 @@ public class PaintEvent implements Listener {
 	
 	@EventHandler(priority=EventPriority.HIGH)
 	public void HandleBlock(BlockPlaceEvent ev){
-		Player pl = ev.getPlayer();
-		if(p.painters.contains(pl) && !p.builds.contains(ev.getBlock().getType())){
-			ev.getBlockAgainst().setTypeIdAndData(ev.getBlock().getTypeId(), ev.getBlock().getData(), true);
+		Player player = ev.getPlayer();
+		Block block = ev.getBlock();
+		if(p.painters.contains(player) &&
+				!p.builds.contains(block.getType()) &&
+				!player.isSneaking()){
+			ev.getBlockAgainst().setTypeIdAndData(block.getTypeId(), block.getData(), true);
 			ev.setCancelled(true);
 		}
 	}
